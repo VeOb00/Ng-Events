@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~ngx-toastr/toastr";
+
+$c-bg: #485563;
+$c-text: lightgray;
+$c-lines: gray;
+$c-card: rgba(255, 255, 255, 0.1);
+$c-card-hover: rgba(255, 255, 255, 0.05);
+
+body {
+  background-color: $c-bg;
+  color: $c-text;
+}
+
+hr {
+  border-color: $c-lines;
+}
+
+.well {
+  background-color: $c-card;
+}
+
+.hoverwell:hover {
+  background-color: $c-card-hover;
+  cursor: pointer;
+}
+
+.container {
+  padding-top: 10px;
+}
+
+.pointable {
+  cursor: pointer;
+}
+
+button {
+  color: #555;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.toast-success {
+  background-color: #51a351;
+}
+.toast-error {
+  background-color: #bd362f;
+}
+.toast-info {
+  background-color: #2f96b4;
+}
+.toast-warning {
+  background-color: #f89406;
+}
