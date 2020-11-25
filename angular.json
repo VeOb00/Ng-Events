@@ -28,7 +28,7 @@
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
-            "scripts": ["node_modules/toastr/build/toastr.min.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {
