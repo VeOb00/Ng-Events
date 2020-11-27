@@ -23,6 +23,8 @@ import { SessionListComponent } from './events/event-details/session-list/sessio
 import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DurationPipe } from './events/shared/duration.pipe';
+import { SimpleModalComponent } from './common/simple-modal/simple-modal.component';
+import { UpvoteComponent } from './events/event-details/upvote/upvote.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { DurationPipe } from './events/shared/duration.pipe';
     SessionListComponent,
     CollapsibleWellComponent,
     DurationPipe,
+    SimpleModalComponent,
+    UpvoteComponent,
   ],
   imports: [
     BrowserModule,

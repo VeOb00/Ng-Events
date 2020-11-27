@@ -1,6 +1,9 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ISession } from '../../shared/event';
 import { faFireAlt } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/user/auth.service';
+import { VoterService } from '../voter.service';
 
 @Component({
   selector: 'app-session-list',
@@ -9,12 +12,14 @@ import { faFireAlt } from '@fortawesome/free-solid-svg-icons';
 })
 export class SessionListComponent implements OnInit, OnChanges {
   faFire = faFireAlt;
+  faChevronDown = faChevronDown;
+
   @Input() sessions!: ISession[];
   @Input() filterBy!: string;
   visibleSessions: ISession[] = [];
   @Input() sortBy!: string;
 
-  constructor() {}
+  constructor(private auth: AuthService, private voterService: VoterService) {}
 
   ngOnInit(): void {}
 
@@ -35,6 +40,22 @@ export class SessionListComponent implements OnInit, OnChanges {
         return session.level.toLocaleLowerCase() === filter;
       });
     }
+  }
+
+  toggleVote(session: ISession) {
+    if (this.userHasVoted(session)) {
+      this.voterService.deleteVoter(session, this.auth.currentUser.userName);
+    } else {
+      this.voterService.addVoter(session, this.auth.currentUser.userName);
+    }
+    if (this.sortBy === 'votes') this.visibleSessions.sort(sortByVotesDesc);
+  }
+
+  userHasVoted(session: ISession) {
+    return this.voterService.userHasVoted(
+      session,
+      this.auth.currentUser.userName
+    );
   }
 }
 

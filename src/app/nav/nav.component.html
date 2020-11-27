@@ -28,9 +28,11 @@
 				</div>
 			</li>
 		</ul>
-		<form id="searchForm" class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		<form id="searchForm" class="form-inline my-2 my-lg-0" (ngSubmit)="searchSessions(searchTerm)">
+			<input [(ngModel)]="searchTerm" name="searchTerm" class="form-control mr-sm-2" type="search"
+				placeholder="Search Sessions" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="modal"
+				data-target="#simple-modal">Search</button>
 		</form>
 		<div class="navbar-header navbar-right ml-3">
 			<ul class="navbar-nav ml-auto">
@@ -44,3 +46,10 @@
 		</div>
 	</div>
 </nav>
+
+<app-simple-modal title="Matching Sessions">
+	<div class="list-group">
+		<a *ngFor="let session of foundSessions" class="list-group-item list-group-item-light list-group-item-action"
+			[routerLink]="['/events', session.eventId]" routerLinkActive="router-link-active">{{session.name}}</a>
+	</div>
+</app-simple-modal>
