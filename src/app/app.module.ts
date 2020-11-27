@@ -25,6 +25,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DurationPipe } from './events/shared/duration.pipe';
 import { SimpleModalComponent } from './common/simple-modal/simple-modal.component';
 import { UpvoteComponent } from './events/event-details/upvote/upvote.component';
+import { LocationValidatorDirective } from './events/create-event/location-validator.directive';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { UpvoteComponent } from './events/event-details/upvote/upvote.component'
     DurationPipe,
     SimpleModalComponent,
     UpvoteComponent,
+    LocationValidatorDirective,
   ],
   imports: [
     BrowserModule,

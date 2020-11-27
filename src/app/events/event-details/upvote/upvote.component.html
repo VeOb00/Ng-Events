@@ -1,11 +1,11 @@
 <div class=" pointable d-flex align-items-center justify-content-center text center" (click)="onClick()">
 	<div class="well votingWidget p-3 badge badge-pill ">
 		<div class="votingButton">
-			<fa-icon *ngIf="voted" [icon]="faHeart" class="text-light h4"></fa-icon>
-			<fa-icon *ngIf="!voted" [icon]="faHeart" class="text-dark h4"></fa-icon>
+			<fa-icon [icon]="faHeart" class="h5" [ngClass]="{'text-dark': !voted, 'text-light': voted}">
+			</fa-icon>
 		</div>
 		<div class="">
-			<div class="h5">{{count}}</div>
+			<div class="h6">{{count}}</div>
 		</div>
 	</div>
 </div>
