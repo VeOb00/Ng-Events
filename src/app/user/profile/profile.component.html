@@ -30,8 +30,11 @@
 					placeholder="Last Name..." />
 			</div>
 
-			<button type="submit" class="btn btn-primary">Save</button>
-			<button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+			<div class="d-flex">
+				<button type="submit" class="btn btn-primary">Save</button>
+				<button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+				<button type="button" class="btn btn-warning ml-auto" (click)="logout()">Logut</button>
+			</div>
 		</form>
 	</div>
 </div>

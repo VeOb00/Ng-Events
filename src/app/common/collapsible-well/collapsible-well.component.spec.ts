@@ -8,9 +8,8 @@ describe('CollapsibleWellComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CollapsibleWellComponent ]
-    })
-    .compileComponents();
+      declarations: [CollapsibleWellComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('CollapsibleWellComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  xit('should create', () => {
     expect(component).toBeTruthy();
   });
 });

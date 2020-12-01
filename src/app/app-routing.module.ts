@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { Error404Component } from './errors/error404/error404.component';
-import {
-  CreateEventComponent,
-  EventDetailsComponent,
-  EventRouteActivatorService,
-  EventsListResolverService,
-  EventsListComponent,
-  CreateSessionComponent,
-} from './events/index';
+import { EventsListResolverService } from './events/shared/events-list-resolver.service';
+import { CreateEventComponent } from './events/create-event/create-event.component';
+import { EventDetailsComponent } from './events/event-details/event-details.component';
+import { EventsListComponent } from './events/events-list/events-list.component';
+import { CreateSessionComponent } from './events/event-details/create-session/create-session.component';
+import { EventResolver } from './events/shared/event.resolver';
 
 const routes: Routes = [
   {
@@ -24,7 +22,7 @@ const routes: Routes = [
   {
     path: 'events/:id',
     component: EventDetailsComponent,
-    canActivate: [EventRouteActivatorService],
+    resolve: { event: EventResolver },
   },
   { path: 'events/session/new', component: CreateSessionComponent },
   { path: '', redirectTo: '/events', pathMatch: 'full' },

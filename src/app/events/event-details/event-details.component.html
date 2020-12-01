@@ -11,7 +11,7 @@
 		<div class="col-md-6">
 			<div><strong>Date:</strong> {{event?.date | date: 'dd.MM.yyyy' }}</div>
 			<div><strong>Time:</strong> {{event?.time}}</div>
-			<div><strong>Price:</strong> ${{event?.price | currency: 'EUR' }}</div>
+			<div><strong>Price:</strong> {{event?.price | currency: 'EUR' }}</div>
 		</div>
 		<div class="col-md-6">
 			<address>
@@ -52,7 +52,8 @@
 		</div>
 	</div>
 
-	<app-session-list *ngIf="!addMode" [sessions]="event?.sessions" [filterBy]="filterBy" [sortBy]="sortBy">
+	<app-session-list [eventId]='event?.id' *ngIf="!addMode" [sessions]="event?.sessions" [filterBy]="filterBy"
+		[sortBy]="sortBy">
 	</app-session-list>
 	<app-create-session *ngIf="addMode" (saveNewSession)="saveNewSession($event)"
 		(cancelAddSession)="cancelAddSession()">
