@@ -26,8 +26,9 @@ const routes: Routes = [
   },
   { path: 'events/session/new', component: CreateSessionComponent },
   { path: '', redirectTo: '/events', pathMatch: 'full' },
-  { path: '404', component: Error404Component },
   { path: 'user', loadChildren: `./user/user.module#UserModule` },
+  { path: '404', component: Error404Component },
+  { path: '**', redirectTo: '404' },
 ];
 
 @NgModule({

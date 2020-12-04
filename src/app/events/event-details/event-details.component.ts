@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {
+  faCalendarWeek,
+  faClock,
+  faGlobe,
+  faMapMarkedAlt,
+  faTags,
+} from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/user/auth.service';
 import { ISession } from '../shared/event';
 import { EventService } from '../shared/event.service';
 
@@ -13,10 +21,16 @@ export class EventDetailsComponent implements OnInit {
   addMode: boolean = false;
   filterBy: string = 'all';
   sortBy: string = 'votes';
+  faTags = faTags;
+  faClock = faClock;
+  faCalendar = faCalendarWeek;
+  faAddress = faMapMarkedAlt;
+  faGlobe = faGlobe;
 
   constructor(
     private eventService: EventService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public auth: AuthService
   ) {}
 
   ngOnInit(): void {

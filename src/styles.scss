@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~ngx-toastr/toastr";
+@import "colors.scss";
 
 html {
   -webkit-box-sizing: border-box;
@@ -14,15 +15,17 @@ html {
   box-sizing: inherit;
 }
 
-$c-bg: #485563;
-$c-text: lightgray;
-$c-lines: gray;
-$c-card: rgba(255, 255, 255, 0.1);
-$c-card-hover: rgba(255, 255, 255, 0.05);
+*:focus {
+  outline: none !important;
+}
 
 body {
-  background-color: $c-bg;
-  color: $c-text;
+  background-color: $c-white;
+}
+
+h3,
+h2 {
+  color: $c-blue;
 }
 
 hr {
@@ -30,28 +33,27 @@ hr {
 }
 
 .well {
-  background-color: $c-card;
+  background-color: $c-white;
+  box-shadow: 0 6px 6px rgba(10, 16, 20, 0.15), 0 0 52px rgba(10, 16, 20, 0.12);
+  transition: 2s;
 }
 
-.hoverwell:hover {
-  background-color: $c-card-hover;
+.well:hover {
+  box-shadow: 0 8px 8px rgba(10, 16, 20, 0.24), 0 0 8px rgba(10, 16, 20, 0.12);
   cursor: pointer;
-}
-
-.container {
-  padding-top: 10px;
 }
 
 .pointable {
   cursor: pointer;
 }
 
-button {
-  color: #555;
-}
-
 [hidden] {
   display: none !important;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 // .toast-success {

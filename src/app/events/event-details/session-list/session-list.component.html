@@ -1,23 +1,37 @@
-<div class="row" *ngFor="let session of visibleSessions">
-	<div class="col-md-1" *ngIf="auth.isAuthenticated()">
-		<app-upvote (vote)="toggleVote(session)" [count]="session.voters.length" [voted]="userHasVoted(session)">
-		</app-upvote>
-	</div>
-	<div class="col-md-10">
-		<app-collapsible-well [title]="session.name">
-			<div well-title class="row p-2">
-				<span>{{session.name}}</span>
-				<fa-icon [icon]=" faFire" *ngIf="session.voters.length > 3" class="text-warning ml-3">
-				</fa-icon>
-				<fa-icon [icon]="faChevronDown" class="ml-auto pr-3"></fa-icon>
-			</div>
+<div *ngFor="let session of visibleSessions">
+	<div class="row">
 
-			<div well-body>
-				<h6>{{session.presenter}}</h6>
-				<span>Duration: {{session.duration | duration}}</span><br />
-				<span>Level: {{session.level}}</span>
-				<p>{{session.abstract}}</p>
-			</div>
-		</app-collapsible-well>
+		<div class="col-2 col-sm-1" *ngIf="auth.isAuthenticated()">
+			<app-upvote (vote)="toggleVote(session)" [count]="session.voters.length" [voted]="userHasVoted(session)">
+			</app-upvote>
+		</div>
+
+		<div [ngClass]="{'col': !auth.isAuthenticated(), 'col-10 col-sm-11': auth.isAuthenticated()}">
+			<app-collapsible-well [title]="session.name">
+
+				<div well-title class="row p-2">
+					<span>{{session.name | titlecase }}</span>
+					<fa-icon [icon]=" faFire" *ngIf="session.voters.length > 3" class="text-danger ml-3">
+					</fa-icon>
+					<fa-icon [icon]="faChevronDown" class="ml-auto pr-3 text-primary"></fa-icon>
+				</div>
+
+				<div well-body>
+					<dl class="row">
+						<dt class="col-sm-2">Presenter: </dt>
+						<dd class="col-sm-10">{{session.presenter}}</dd>
+
+						<dt class="col-sm-2">Duration: </dt>
+						<dd class="col-sm-10">{{session.duration | duration}}</dd>
+
+						<dt class="col-sm-2">Level: </dt>
+						<dd class="col-sm-10">{{session.level}}</dd>
+					</dl>
+					<p>{{session.abstract}}</p>
+				</div>
+
+			</app-collapsible-well>
+		</div>
+
 	</div>
 </div>

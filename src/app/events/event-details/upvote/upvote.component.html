@@ -1,11 +1,6 @@
-<div class=" pointable d-flex align-items-center justify-content-center text center" (click)="onClick()">
-	<div class="well votingWidget p-3 badge badge-pill ">
-		<div class="votingButton">
-			<fa-icon [icon]="faHeart" class="h5" [ngClass]="{'text-dark': !voted, 'text-light': voted}">
-			</fa-icon>
-		</div>
-		<div class="">
-			<div class="h6">{{count}}</div>
-		</div>
+<div class="pointable d-flex align-items-center justify-content-center" (click)="onClick()">
+	<div class="well votingWidget badge badge-pill p-2">
+		<fa-icon [icon]="faHeart" class="h5" [ngClass]="{'text-secondary': !voted, 'text-danger': voted}"></fa-icon>
+		<div class="h6">{{count}}</div>
 	</div>
 </div>

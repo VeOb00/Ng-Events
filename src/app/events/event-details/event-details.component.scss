@@ -1,3 +1,12 @@
+@import "../../../colors.scss";
+
 .event-image {
-  height: 100px;
+  //   max-width: 400px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
+}
+
+.event-info {
+  background-color: lighten($c-blue, 40);
 }

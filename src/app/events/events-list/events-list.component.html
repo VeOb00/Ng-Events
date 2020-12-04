@@ -1,10 +1,15 @@
 <div>
-	<h1>Upcoming Angular Events!</h1>
-	<hr />
-	<div class="row">
-		<div class="col-md-5" *ngFor="let event of events">
-			<app-event-thumbnail #thumbnail [event]="event">
-			</app-event-thumbnail>
+	<app-hero>
+		<div hero-title>Upcoming Angular Events</div>
+		<div hero-body>Knowledge, ideas, and insights for the Next Generation</div>
+	</app-hero>
+
+	<div class="container">
+		<div class="row row-cols-1 row-cols-lg-2">
+			<div class="col mb-3" *ngFor="let event of events">
+				<app-event-thumbnail #thumbnail [event]="event">
+				</app-event-thumbnail>
+			</div>
 		</div>
 	</div>
 </div>

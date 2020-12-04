@@ -1,4 +1,19 @@
+@import "../../../colors.scss";
+
 .modal-body {
-  height: 200px;
+  height: 50vh;
   overflow-y: scroll;
+}
+
+.modal-custom {
+  .modal-header {
+    background-color: $c-blue;
+    background: linear-gradient(
+      90deg,
+      darken($c-blue, 10) 0%,
+      $c-blue 50%,
+      lighten($c-blue, 10) 100%
+    );
+    color: $c-white;
+  }
 }

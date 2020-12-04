@@ -1,34 +1,46 @@
-<h1>Login</h1>
-<hr>
-<div class="col-md-4">
-	<form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off">
-		<div class="form-group">
-			<div class="d-flex align-items-end">
-				<label for="userName">User Name:</label>
-				<em *ngIf="loginForm.controls.userName?.invalid && loginForm.controls.userName?.touched || mouseoverLogin"
-					class="text-warning ml-auto small">
-					Required</em>
-			</div>
-			<input (ngModel)="userName" name="userName" id="userName" type="text" required class="form-control"
-				placeholder="User Name..." required />
+<app-hero>
+	<div hero-title>
+		Login
+	</div>
+	<div hero-body>
+		Login to vote and edit content
+	</div>
+</app-hero>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-lg-4">
+			<form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off">
+				<div class="form-group">
+					<div class="d-flex align-items-end">
+						<label for="userName">User Name:</label>
+						<em *ngIf="loginForm.controls.userName?.invalid && loginForm.controls.userName?.touched || mouseoverLogin"
+							class="text-danger ml-auto small">
+							Required</em>
+					</div>
+					<input (ngModel)="userName" name="userName" id="userName" type="text" required class="form-control"
+						placeholder="User Name..." required />
+				</div>
+				<div class="form-group">
+					<div class="d-flex align-items-end">
+						<label for="password">Password:</label>
+						<em *ngIf="loginForm.controls.password?.invalid && loginForm.controls.password?.touched || mouseoverLogin"
+							class="text-danger ml-auto small">Required</em>
+					</div>
+					<input (ngModel)="password" name="password" id="password" type="password" required
+						class="form-control" placeholder="Password..." required />
+				</div>
+
+				<div class="mt-5">
+					<span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+						<button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+					</span>
+					<button (click)="cancel()" type="button" class="btn btn-outline-danger ml-2">Cancel</button>
+				</div>
+			</form>
+
+			<br>
+			<div *ngIf="loginInvalid" class="alert alert-danger" role="alert">Invalid login info</div>
 		</div>
-		<div class="form-group">
-			<div class="d-flex align-items-end">
-				<label for="password">Password:</label>
-				<em *ngIf="loginForm.controls.password?.invalid && loginForm.controls.password?.touched || mouseoverLogin"
-					class="text-warning ml-auto small">Required</em>
-			</div>
-			<input (ngModel)="password" name="password" id="password" type="password" required class="form-control"
-				placeholder="Password..." required />
-		</div>
-
-
-		<span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
-			<button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
-		</span>
-		<button (click)="cancel()" type="button" class="btn btn-default">Cancel</button>
-	</form>
-
-	<br>
-	<div *ngIf="loginInvalid" class="alert alert-danger">Invalid login info</div>
+	</div>
 </div>

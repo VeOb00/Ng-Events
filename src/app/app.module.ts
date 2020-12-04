@@ -26,6 +26,7 @@ import { SimpleModalComponent } from './common/simple-modal/simple-modal.compone
 import { UpvoteComponent } from './events/event-details/upvote/upvote.component';
 import { LocationValidatorDirective } from './events/create-event/location-validator.directive';
 import { EventResolver } from './events/shared/event.resolver';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { EventResolver } from './events/shared/event.resolver';
     SimpleModalComponent,
     UpvoteComponent,
     LocationValidatorDirective,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

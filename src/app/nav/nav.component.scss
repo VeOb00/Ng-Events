@@ -1,5 +1,8 @@
+@import "../../colors.scss";
+
 .navbar {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  background-color: darken($c-blue, 20);
 }
 
 .navbar-brand {
@@ -7,5 +10,5 @@
 }
 
 #searchForm {
-  margin-right: 100px;
+  margin-right: 60px;
 }

@@ -1,61 +1,122 @@
-<div class="container">
-	<img class="event-image" [src]="event?.imageUrl" [alt]="event?.name">
+<app-hero>
+	<div hero-title>
+		{{event?.name | titlecase}}
+	</div>
+	<div hero-body>
+		<div *ngIf="event?.location">
+			{{event?.location?.city}}, {{event?.location?.country}}
+		</div>
+		<div *ngIf="event?.onlineUrl">
+			{{ event?.onlineUrl }}
+		</div>
+	</div>
+</app-hero>
 
-	<div class="row">
-		<div class="col-md-11">
-			<h2>{{event?.name | uppercase}} </h2>
+
+<div class="container">
+
+	<div class="row ">
+		<div class="lead col-6 col-md-4 col-lg-3">
+			<p>
+				<fa-icon [icon]="faCalendar" title="Date" class="text-primary mr-1"></fa-icon>
+				{{event?.date | date: 'dd.MM.yyyy' }}
+			</p>
+			<p>
+				<fa-icon [icon]="faClock" title="Time" class="text-primary mr-1"></fa-icon>
+				{{event?.time}}
+			</p>
+			<p>
+				<fa-icon [icon]="faTags" title="Price" class="text-primary mr-1"></fa-icon>
+				{{event?.price | currency: 'EUR' }}
+			</p>
+		</div>
+
+		<div class="d-none d-md-block lead col-md-4 col-lg-3">
+			<p *ngIf="event?.onlineUrl" class="col">
+				<fa-icon [icon]="faGlobe" title="Location" class="text-primary mr-1"></fa-icon>
+				<a [href]="event?.onlineUrl" target="_blank">{{ event?.onlineUrl }}</a>
+			</p>
+			<div *ngIf="event?.location" class="col">
+				<address>
+					<fa-icon [icon]="faAddress" class="text-primary" title="Location"></fa-icon>
+					<br />
+					{{event?.location?.address}}<br />
+					{{event?.location?.city}}, {{event?.location?.country}}
+				</address>
+			</div>
+		</div>
+
+		<div class="col-6 text-right col-md-4 col-lg-6">
+			<img class="event-image img-fluid" [src]="event?.imageUrl" [alt]="event?.name">
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-md-6">
-			<div><strong>Date:</strong> {{event?.date | date: 'dd.MM.yyyy' }}</div>
-			<div><strong>Time:</strong> {{event?.time}}</div>
-			<div><strong>Price:</strong> {{event?.price | currency: 'EUR' }}</div>
-		</div>
-		<div class="col-md-6">
+	<div class="row lead d-md-none">
+		<p *ngIf="event?.onlineUrl" class="col">
+			<fa-icon [icon]="faGlobe" title="Location" class="text-primary mr-1"></fa-icon>
+			<a [href]="event?.onlineUrl" target="_blank">{{ event?.onlineUrl }}</a>
+		</p>
+		<div *ngIf="event?.location" class="col">
 			<address>
-				<strong>Address:</strong><br />
+				<fa-icon [icon]="faAddress" class="text-primary" title="Location"></fa-icon>
+				<br />
 				{{event?.location?.address}}<br />
 				{{event?.location?.city}}, {{event?.location?.country}}
 			</address>
 		</div>
 	</div>
 
-	<hr>
+	<hr class="my-5">
 
-	<div class="row mt-5">
-		<div class="col-md-10 d-flex">
-			<h3>Sessions</h3>
+	<div class="my-5" *ngIf="!addMode">
+		<div class="w-100 d-sm-none">
+			<a class="badge badge-pill badge-danger" (click)="addSession()" *ngIf="auth.isAuthenticated()">
+				Add New Session</a>
+		</div>
 
-			<div class="ml-3 mb-1 btn-group btn-group-sm btn-group-toggle">
-				<button class="btn btn-secondary" [class.active]="sortBy === 'name'" (click)="sortBy = 'name'">By
-					Name</button>
-				<button class="btn btn-secondary" [class.active]="sortBy === 'votes'" (click)="sortBy = 'votes'">By
-					Votes</button>
+		<div class="row">
+			<div class="col-5 d-flex align-items-start">
+				<h3>Sessions</h3>
+				<div class="d-none d-sm-inline ml-3">
+					<a class="badge badge-pill badge-danger pointable" (click)="addSession()"
+						*ngIf="auth.isAuthenticated()">
+						Add New Session</a>
+				</div>
 			</div>
 
-			<div class="ml-3 mb-1 btn-group btn-group-sm">
-				<button class="btn btn-secondary" [class.active]="filterBy === 'all'"
-					(click)="filterBy = 'all'">All</button>
-				<button class="btn btn-secondary" [class.active]="filterBy === 'beginner'"
-					(click)="filterBy = 'beginner'">Beginner</button>
-				<button class="btn btn-secondary" [class.active]="filterBy === 'intermediate'"
-					(click)="filterBy = 'intermediate'">Intermediate</button>
-				<button class="btn btn-secondary" [class.active]="filterBy === 'advanced'"
-					(click)="filterBy = 'advanced'">Advanced</button>
-			</div>
-
-			<div class="ml-auto">
-				<button class="btn btn-primary" (click)="addSession()">Add Session</button>
+			<div class="col-7 text-right btn-sm">
+				<div class="btn-group btn-group-toggle btn-group-sm">
+					<button class="btn btn-primary" [class.active]="sortBy === 'name'" (click)="sortBy = 'name'">
+						By Name</button>
+					<button class="btn btn-primary" [class.active]="sortBy === 'votes'" (click)="sortBy = 'votes'">
+						By Votes</button>
+				</div>
 			</div>
 		</div>
+
+		<div class="row my-1">
+			<div class="btn-group btn-group-sm  col">
+				<button class="btn btn-outline-primary" [class.active]="filterBy === 'all'"
+					(click)="filterBy = 'all'">All</button>
+				<button class="btn btn-outline-primary" [class.active]="filterBy === 'beginner'"
+					(click)="filterBy = 'beginner'">Beginner</button>
+				<button class="btn btn-outline-primary" [class.active]="filterBy === 'intermediate'"
+					(click)="filterBy = 'intermediate'">Intermediate</button>
+				<button class="btn btn-outline-primary" [class.active]="filterBy === 'advanced'"
+					(click)="filterBy = 'advanced'">Advanced</button>
+			</div>
+		</div>
+
 	</div>
 
 	<app-session-list [eventId]='event?.id' *ngIf="!addMode" [sessions]="event?.sessions" [filterBy]="filterBy"
 		[sortBy]="sortBy">
 	</app-session-list>
+
 	<app-create-session *ngIf="addMode" (saveNewSession)="saveNewSession($event)"
 		(cancelAddSession)="cancelAddSession()">
 	</app-create-session>
+
+
+
 </div>

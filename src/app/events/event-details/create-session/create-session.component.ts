@@ -18,6 +18,7 @@ export class CreateSessionComponent implements OnInit {
   duration: FormControl = new FormControl();
   level: FormControl = new FormControl();
   abstract: FormControl = new FormControl();
+  mouseoverRequired!: boolean;
 
   constructor() {}
 
