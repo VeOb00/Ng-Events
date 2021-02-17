@@ -1,10 +1,12 @@
-# NgFundamentals
+# Ng-Events - NgFundamentals
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
+Pluralsight's Angular Fundamentals Tutorial by Joe Eames and Jim Cooper used as inspiration. Contrary to their recommendation to follow along with the same cli version 7.1.2, this project is created in the then newest Angular version and up-to-date npm-packages.
+
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run server` and `npm run start`. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
