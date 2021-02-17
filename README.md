@@ -2,11 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
-Pluralsight's Angular Fundamentals Tutorial by Joe Eames and Jim Cooper used as inspiration. Contrary to their recommendation to follow along with the same cli version 7.1.2, this project is created in the then newest Angular version and up-to-date npm-packages.
+Pluralsight's [Angular Fundamentals Tutorial](https://app.pluralsight.com/library/courses/angular-fundamentals/table-of-contents) by Joe Eames and Jim Cooper used as inspiration. Contrary to their recommendation to follow along with the same cli version (7.1.2), this project is created in the then newest Angular version, up-to-date npm-packages and strict TS.
 
 ## Development server
 
 Run `npm run server` and `npm run start`. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Login
+
+To login type username `johnpapa`, `bradgreen`, `igorminar` or `martinfowler` in combination with any password. Logged in users can like sessions, create new events and add new sessions.
+
 
 ## Code scaffolding
 
